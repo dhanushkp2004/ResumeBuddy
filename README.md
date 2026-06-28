@@ -1,6 +1,17 @@
 # ResumeBuddy
 
-A production-ready full-stack AI-powered dashboard application that analyzes resumes (PDF and DOCX formats) against target job descriptions. The application scores compatibility, measures ATS readability, details skill gaps, generates editable AI bullet point rewrites, and prepares potential interview questions.
+AI-powered Resume Job Match Scorer that compares resumes with job descriptions using OpenAI.
+
+## Features
+
+- Resume Parsing (PDF & DOCX)
+- ATS Compatibility Score
+- Skill Gap Analysis
+- Resume Improvement Suggestions
+- AI Bullet Point Rewriter
+- Interview Question Generator
+- Modern Dashboard
+- Dark & Light Mode
 
 ---
 
