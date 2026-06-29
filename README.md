@@ -1,178 +1,218 @@
-<!-- ======================== BANNER ======================== -->
+<!-- ==================== BANNER ==================== -->
 
-<p align="center"> <img src="banner.png" width="100%" alt="Banner"/> </p>
+<p align="center">
+  <img src="banner.png" width="100%" alt="ResumeBuddy Banner"/>
+</p>
 
+<h1 align="center">ResumeBuddy</h1>
 
-# ResumeBuddy
+<p align="center">
 
-AI-powered Resume Job Match Scorer that compares resumes with job descriptions using OpenAI.
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=28&pause=1000&color=3B82F6&center=true&vCenter=true&width=700&lines=AI-Powered+Resume+Job+Match+Scorer;ATS+Compatibility+Analysis;Skill+Gap+Detection;AI+Resume+Rewrite+Suggestions;Built+with+FastAPI+%2B+React+%2B+OpenAI" />
 
-## Features
+</p>
 
-- Resume Parsing (PDF & DOCX)
-- ATS Compatibility Score
-- Skill Gap Analysis
-- Resume Improvement Suggestions
-- AI Bullet Point Rewriter
-- Interview Question Generator
-- Modern Dashboard
-- Dark & Light Mode
+<p align="center">
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react"/>
+<img src="https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+
+</p>
 
 ---
 
-## Architecture Overview
+# 📖 About
+
+ResumeBuddy is an **AI-powered Resume Job Match Scorer** that analyzes resumes against job descriptions using **OpenAI**, providing ATS scores, skill-gap analysis, missing keywords, resume improvements, and interview preparation suggestions.
+
+---
+
+# ✨ Features
+
+<table>
+
+<tr>
+
+<td width="50%">
+
+✅ Resume Parsing (PDF & DOCX)
+
+✅ ATS Compatibility Score
+
+✅ Skill Gap Analysis
+
+✅ Missing Keywords Detection
+
+✅ Resume Rewrite Suggestions
+
+</td>
+
+<td width="50%">
+
+✅ AI Bullet Point Rewriter
+
+✅ Interview Question Generator
+
+✅ Interactive Dashboard
+
+✅ Charts & Analytics
+
+✅ Dark / Light Theme
+
+</td>
+
+</tr>
+
+</table>
+
+---
+
+# ⚡ Workflow
 
 ```mermaid
-graph TD
-    User[User Browser]
-    Vite[React / Vite Frontend]
-    FastAPI[FastAPI Backend]
-    Parser[Parser Services: pdfplumber / docx]
-    OpenAI[OpenAI API / Mock Fallback]
+flowchart LR
 
-    User -->|Upload Resume & Job Details| Vite
-    Vite -->|POST /upload| FastAPI
-    FastAPI -->|Extract Raw Text| Parser
-    Parser -->|Text Content| FastAPI
-    FastAPI -->|JSON Text| Vite
-    Vite -->|POST /analyze| FastAPI
-    FastAPI -->|Evaluate and Structured JSON| OpenAI
-    OpenAI -->|Scores & Recommendations| FastAPI
-    FastAPI -->|AnalysisResponse JSON| Vite
-    Vite -->|Render Charts & Accordions| User
+A[📄 Upload Resume]
+B[📝 Paste Job Description]
+C[⚙ Resume Parsing]
+D[🤖 OpenAI Analysis]
+E[📊 Match Score]
+F[🎯 ATS Score]
+G[📈 Dashboard]
+
+A --> C
+B --> D
+C --> D
+D --> E
+D --> F
+E --> G
+F --> G
 ```
 
 ---
 
-## Tech Stack
+# 🛠 Tech Stack
 
-### Backend
-* **Python** (FastAPI framework)
-* **OpenAI API** (GPT-4o-mini structured analysis)
-* **pdfplumber** (PDF document text extraction)
-* **python-docx** (DOCX document text extraction)
-* **Pydantic** (Data modeling & validation schemas)
-* **Uvicorn** (Asynchronous ASGI server)
-
-### Frontend
-* **React** (Vite + TypeScript)
-* **Tailwind CSS v3** (Glassmorphic dark/light styles)
-* **Framer Motion** (Fluid page and loader animations)
-* **Lucide Icons** (UI vector indicators)
-* **Axios** (API requests)
+| Frontend | Backend | AI | Parsing |
+|-----------|----------|------|---------|
+| React | FastAPI | OpenAI | pdfplumber |
+| Vite | Python | GPT-4o | python-docx |
+| TailwindCSS | Pydantic | Prompt Engineering | |
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
 ```text
-Resume Scorer/
+ResumeBuddy/
+
 ├── backend/
-│   ├── models/
-│   │   └── schemas.py          # Pydantic request/response structures
-│   ├── routes/
-│   │   ├── analyze.py          # Resume assessment endpoint (/analyze)
-│   │   ├── health.py           # Core status checker (/health)
-│   │   └── upload.py           # File processing endpoint (/upload)
-│   ├── services/
-│   │   ├── openai_service.py   # OpenAI communication & Mock Fallback
-│   │   └── parser.py           # pdfplumber / docx parser
-│   ├── .env.example            # Configuration templates
-│   ├── .env                    # Active local environment keys
-│   ├── requirements.txt        # Backend python packages
-│   └── app.py                  # API entry point & CORS configuration
-│
+
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Charts.tsx      # SVG interactive statistics charts
-│   │   │   ├── Dashboard.tsx   # Detailed analysis metrics panel
-│   │   │   ├── LandingPage.tsx # Hero, dropzone, and input text-areas
-│   │   │   └── ThemeToggle.tsx # Light/dark mode dynamic control
-│   │   ├── App.tsx             # State router & toast notifier
-│   │   ├── index.css           # Styling configuration and custom scrollbars
-│   │   └── main.tsx            # DOM node mounting entrypoint
-│   ├── index.html              # HTML core shell & Google Fonts imports
-│   ├── package.json            # Node JS packages configuration
-│   ├── postcss.config.js       # CSS post-processors configuration
-│   ├── tailwind.config.js      # Styling themes mapping
-│   ├── tsconfig.json           # Compiler rules for TypeScript
-│   └── vite.config.ts          # Vite bundler parameters
-└── README.md                   # System Documentation
+
+├── README.md
+
+├── banner.png
+
+└── LICENSE
 ```
 
 ---
 
-## Installation & Setup
+# 📊 Dashboard Preview
 
-### Prerequisites
-* Python 3.9 or higher
-* Node.js 18.0 or higher
-* npm (Node Package Manager)
+<p align="center">
 
-### 1. Setup the Backend API
+<img src="preview/dashboard.png" width="90%"/>
 
-1. Navigate to the `backend/` directory:
-   ```bash
-   cd backend
-   ```
-
-2. Create a virtual environment (optional but recommended):
-   ```bash
-   python -m venv venv
-   # On Windows:
-   .\venv\Scripts\activate
-   # On macOS/Linux:
-   source venv/bin/activate
-   ```
-
-3. Install required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Create and edit your environment variables file:
-   Copy `.env.example` to `.env` and fill in your OpenAI API Key:
-   ```env
-   OPENAI_API_KEY=your_actual_openai_key_here
-   PORT=8000
-   ```
-   > [!NOTE]
-   > **Mock Mode Fallback**: If you do not configure an `OPENAI_API_KEY`, the application will automatically enter **Mock Analysis Mode**. It will scan the job description/resume for standard keywords and return realistic mockup metrics. This permits complete testing of the frontend, file upload parser, charts, and editing dashboard immediately without requiring active tokens.
-
-5. Start the FastAPI development server:
-   ```bash
-   uvicorn app:app --reload
-   ```
-   The backend API will run on **`http://localhost:8000`**. You can view the automated OpenAPI documentation by visiting `http://localhost:8000/docs`.
+</p>
 
 ---
 
-### 2. Setup the Frontend Client
+# 🚀 Installation
 
-1. Navigate to the `frontend/` directory:
-   ```bash
-   cd ../frontend
-   ```
+```bash
+git clone https://github.com/yourusername/ResumeBuddy.git
 
-2. Install Node.js dependencies:
-   ```bash
-   npm install
-   ```
+cd ResumeBuddy
+```
 
-3. Start the Vite React development server:
-   ```bash
-   npm run dev
-   ```
-   The frontend will run on **`http://localhost:5173`**. Open this address in your web browser.
+Backend
+
+```bash
+cd backend
+
+pip install -r requirements.txt
+
+uvicorn app:app --reload
+```
+
+Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
 
 ---
 
-## Verification & Usage Flow
+# 🎯 Roadmap
 
-1. **Accessing the landing page**: Load the client inside your browser. The application logo should appear alongside an **API Connected** status pill at the header.
-2. **Uploading documents**: Drop a `.pdf` or `.docx` file into the upload zone. The app verifies document formats and reads character lengths.
-3. **Pasting target requirements**: Paste standard job specifications in the input area and note the live word counters.
-4. **Analyzing records**: Click **Analyze Compatibility**. Upon completion, you will be redirected to the scoring suite dashboard.
-5. **Checking statistics**: Verify overall scores, donut skill charts, and bar coverages. Select tabs to edit AI-rewritten resume bullet points or study interview preparation questions.
-6. **Theme Toggling**: Click the header Sun/Moon button to inspect high-contrast light and dark themes.
+- [x] Resume Upload
+
+- [x] ATS Score
+
+- [x] Skill Gap Analysis
+
+- [x] AI Resume Rewrite
+
+- [x] Interview Questions
+
+- [ ] Resume History
+
+- [ ] Authentication
+
+- [ ] Export to PDF
+
+- [ ] Company-specific Analysis
+
+---
+
+# 📈 Repository Stats
+
+<p align="center">
+
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=dhanushkp2004&repo=ResumeBuddy"/>
+
+</p>
+
+---
+
+# 💙 Made With
+
+<p align="center">
+
+<img src="https://skillicons.dev/icons?i=python,fastapi,react,tailwind,vite,git,github,vscode"/>
+
+</p>
+
+---
+
+<p align="center">
+
+<img src="https://komarev.com/ghpvc/?username=dhanushkp2004&label=Repository+Views&color=0e75b6&style=flat"/>
+
+</p>
+
+<h3 align="center">
+
+⭐ If you like this project, don't forget to star the repository!
+
+</h3>
