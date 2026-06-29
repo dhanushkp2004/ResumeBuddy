@@ -1,3 +1,6 @@
+<!-- ======================== BANNER ======================== -->
+
+<p align="center"> <img src="banner.png" width="100%" alt="Banner"/> </p>
 # ResumeBuddy
 
 AI-powered Resume Job Match Scorer that compares resumes with job descriptions using OpenAI.
