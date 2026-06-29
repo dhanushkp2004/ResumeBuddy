@@ -185,15 +185,10 @@ npm run dev
 
 ---
 
-# 📈 Repository Stats
-
-<p align="center">
-
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=dhanushkp2004&repo=ResumeBuddy"/>
-
-</p>
-
----
+![GitHub stars](https://img.shields.io/github/stars/dhanushkp2004/ResumeBuddy?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/dhanushkp2004/ResumeBuddy?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/dhanushkp2004/ResumeBuddy?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/dhanushkp2004/ResumeBuddy?style=for-the-badge)
 
 # 💙 Made With
 
